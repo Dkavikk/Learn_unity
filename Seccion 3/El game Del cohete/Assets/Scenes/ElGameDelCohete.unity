@@ -521,6 +521,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4269809557211790495, guid: 6e329bf962994ac4bb5eabd90822d38a, type: 3}
+      propertyPath: speedRotation
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 6729947139115463445, guid: 6e329bf962994ac4bb5eabd90822d38a, type: 3}
       propertyPath: m_Name
       value: Rocked

@@ -53,11 +53,7 @@
     <UnityVersion>2020.3.16f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Score.cs" />
-    <Compile Include="Assets\Scripts\PrinToConsole.cs" />
-    <Compile Include="Assets\Scripts\Dropper.cs" />
-    <Compile Include="Assets\Scripts\ObjectHit.cs" />
-    <Compile Include="Assets\Scripts\Mover.cs" />
+    <Compile Include="Assets\Scripts\Movement.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
