@@ -6,14 +6,18 @@ public class Movement : MonoBehaviour
 {
 
     Rigidbody RBody;
+    AudioSource ASource;
 
-    [SerializeField] float mainThruast = 1000f;
-    [SerializeField] float rotationThrust = 80f;
+    [SerializeField] float mainThruast;
+    [SerializeField] float rotationThrust;
 
     // Start is called before the first frame update
     void Start()
     {
         RBody = GetComponent<Rigidbody>();
+        ASource = GetComponent<AudioSource>();
+
+        ASource.Stop();
     }
 
     // Update is called once per frame
@@ -33,6 +37,13 @@ public class Movement : MonoBehaviour
                                    Vector3.up abreviacion para escribir vectores
                   AddRelativeForce(Vector3.up agrega una fuerza al rigiBody en relación con su sistema de coordenadas  */
             RBody.AddRelativeForce(Vector3.up * mainThruast * Time.deltaTime);
+            if (!ASource.isPlaying){
+                ASource.Play();
+            }
+        }
+        else
+        {
+                ASource.Pause();
         }
 
     }
@@ -51,7 +62,9 @@ public class Movement : MonoBehaviour
 
     void ApplyRotation(float rotationThisFrame)
     {
+        RBody.freezeRotation = true;
         //                      .up = Vector3(0, 0, 1)
         transform.Rotate(Vector3.forward * rotationThisFrame * Time.deltaTime);
+        RBody.freezeRotation = false;
     }
 }
