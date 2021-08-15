@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/ElGameDelCohete.unity
+    guid: 88b71d75641abd541be0ca0363275b4e
   m_configObjects: {}

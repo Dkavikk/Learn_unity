@@ -11,7 +11,6 @@ public class Movement : MonoBehaviour
     [SerializeField] float mainThruast;
     [SerializeField] float rotationThrust;
 
-    // Start is called before the first frame update
     void Start()
     {
         RBody = GetComponent<Rigidbody>();
@@ -20,7 +19,6 @@ public class Movement : MonoBehaviour
         ASource.Stop();
     }
 
-    // Update is called once per frame
     void Update()
     {
         ProcessThrust();
