@@ -2,19 +2,17 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-
-    public Rigidbody RBody;
-    public AudioSource ASource;
-
-    [SerializeField] float mainThruast;
+    [SerializeField] float mainThrust;
     [SerializeField] float rotationThrust;
+    [SerializeField] AudioClip SFXmainEngine;
+
+    Rigidbody rb;
+    AudioSource audioSource;
 
     void Start()
     {
-        RBody = GetComponent<Rigidbody>();
-        ASource = GetComponent<AudioSource>();
-
-        ASource.Stop();
+        rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -32,16 +30,16 @@ public class Movement : MonoBehaviour
             //                             up   = Vector3(0, 1, 0)
             //                     Vector3.     Abreviacion para escribir vectores
             //    AddRelativeForce(             Agrega una fuerza al rigiBody en relación con su sistema de coordenadas
-            RBody.AddRelativeForce(Vector3.up * mainThruast * Time.deltaTime);
-            if (!ASource.isPlaying){
-                ASource.Play();
+            rb.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
+            if (!audioSource.isPlaying)
+            {
+                audioSource.PlayOneShot(SFXmainEngine);
             }
         }
         else
         {
-                ASource.Pause();
+            audioSource.Stop();
         }
-
     }
     void ProcessRotation()
     {
@@ -58,9 +56,9 @@ public class Movement : MonoBehaviour
 
     void ApplyRotation(float rotationThisFrame)
     {
-        RBody.freezeRotation = true;
+        GetComponent<Rigidbody>().freezeRotation = true;
         //                      .forward    = Vector3(0, 0, 1)
         transform.Rotate(Vector3.forward * rotationThisFrame * Time.deltaTime);
-        RBody.freezeRotation = false;
+        rb.freezeRotation = false;
     }
 }

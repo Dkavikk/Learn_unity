@@ -111,8 +111,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f2857b415dba5e419803ca88f13aac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainThruast: 1000
+  mainThrust: 1000
   rotationThrust: 80
+  SFXmainEngine: {fileID: 8300000, guid: 4f9884ee40c7df8418bcf21d5c0b94c7, type: 3}
 --- !u!54 &-5118307066770860463
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -139,11 +140,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4f9884ee40c7df8418bcf21d5c0b94c7, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 0.6
   m_Pitch: 0.85
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -239,7 +240,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.41
+      value: 0.55
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -269,7 +270,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.49
+      value: 0.54
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -291,3 +292,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f1f6f38ee929cb4bbf4edb77451bc60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelLoadDelay: 2
+  SFXFinish: {fileID: 8300000, guid: 3e5837a7a73ba7747857d3fdc7f17081, type: 3}
+  SFXDeath: {fileID: 8300000, guid: b5588466f681dd44689549b29d02f5fb, type: 3}
