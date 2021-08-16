@@ -3,13 +3,14 @@ using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
-    Movement movementController;
+    [SerializeField] float levelLoadDelay = 2f;
+
     void OnCollisionEnter(Collision other)
     {
         switch (other.gameObject.tag)
         {
             case "ThingThatKill":
-                Invoke("ReloadLvl", 3f);
+                StartCrashSequence();
                 break;
             case "Friendly":
                 Debug.Log("esta es una superficie segura");
@@ -18,7 +19,7 @@ public class CollisionHandler : MonoBehaviour
                 Debug.Log("Tomaste combustible");
                 break;
             case "Finish":
-                LoadNextLvl();
+                StartNextLevelSequence();
                 break;
             case "Start":
                 Debug.Log("Esta es la base de lanzamiento");
@@ -30,8 +31,22 @@ public class CollisionHandler : MonoBehaviour
         }
     }
 
+    // le pone un delay al method ReloadLevel, y inmoviliza al jugador
+    void StartCrashSequence()
+    {
+        GetComponent<Movement>().enabled = false;
+        Invoke("ReloadLevel", levelLoadDelay);
+    }
+
+    // le pone un delay al method LoadNextLevelSequence, y inmoviliza al jugador
+    void StartNextLevelSequence()
+    {
+        GetComponent<Movement>().enabled = false;
+        Invoke("LoadNextLevel", levelLoadDelay);
+    }
+
     // para recargar en nivel en el que esta
-    void ReloadLvl()
+    void ReloadLevel()
     {
         //                                                   buildIndex;    Devuelve el índice de la escena en la Build Settings
         //                                  GetActiveScene().               Obtiene la escena en la que estamos
@@ -39,16 +54,15 @@ public class CollisionHandler : MonoBehaviour
         int currenSceneIndex = SceneManager.GetActiveScene().buildIndex;
         //           LoadScene  Cargala escena por su nombre (es en string) o index (es en int) en Build Settings.
         SceneManager.LoadScene(currenSceneIndex);
-        movementController.RBody.freezeRotation = false;
     }
 
-
     // para avanzar a l siguiente nivel, encaso de que no halla mas niveles vuelve al primero (0)
-    void LoadNextLvl()
+    void LoadNextLevel()
     {
         int currenSceneIndex = SceneManager.GetActiveScene().buildIndex;
         int nextLevel = currenSceneIndex + 1;
 
+        //para acordarme como cuenta las escenas y como cuenta las cantidad de escenas
         //0, 1, 2, 3, 4
         //1, 2, 3, 4, 5
         //                            sceneCountInBuildSettings Numero de escenas en Build Settings
