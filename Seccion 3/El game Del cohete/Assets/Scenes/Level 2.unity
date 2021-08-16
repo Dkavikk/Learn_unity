@@ -316,6 +316,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f1f6f38ee929cb4bbf4edb77451bc60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelLoadDelay: 2
+  SFXFinish: {fileID: 0}
+  SFXDeath: {fileID: 0}
+  PFXFinish: {fileID: 0}
+  PFXDeath: {fileID: 0}
 --- !u!1001 &892672984717071666
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -622,7 +627,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 953651947295548074, guid: 6e329bf962994ac4bb5eabd90822d38a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.5
+      value: 0.97
       objectReference: {fileID: 0}
     - target: {fileID: 953651947295548074, guid: 6e329bf962994ac4bb5eabd90822d38a, type: 3}
       propertyPath: m_LocalPosition.z
