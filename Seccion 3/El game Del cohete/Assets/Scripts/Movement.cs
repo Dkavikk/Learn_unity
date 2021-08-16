@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
 
-    Rigidbody RBody;
-    AudioSource ASource;
+    public Rigidbody RBody;
+    public AudioSource ASource;
 
     [SerializeField] float mainThruast;
     [SerializeField] float rotationThrust;
@@ -31,9 +29,9 @@ public class Movement : MonoBehaviour
         //  Input.GetKey(KeyCode.<Codigo de la tecla>), se utiliza para saber cuando una tecla es presionada 
         if (Input.GetKey(KeyCode.Space))
         {
-            /*                            .up = Vector3(0, 1, 0)
-                                   Vector3.up abreviacion para escribir vectores
-                  AddRelativeForce(Vector3.up agrega una fuerza al rigiBody en relación con su sistema de coordenadas  */
+            //                             up   = Vector3(0, 1, 0)
+            //                     Vector3.     Abreviacion para escribir vectores
+            //    AddRelativeForce(             Agrega una fuerza al rigiBody en relación con su sistema de coordenadas
             RBody.AddRelativeForce(Vector3.up * mainThruast * Time.deltaTime);
             if (!ASource.isPlaying){
                 ASource.Play();
@@ -61,7 +59,7 @@ public class Movement : MonoBehaviour
     void ApplyRotation(float rotationThisFrame)
     {
         RBody.freezeRotation = true;
-        //                      .up = Vector3(0, 0, 1)
+        //                      .forward    = Vector3(0, 0, 1)
         transform.Rotate(Vector3.forward * rotationThisFrame * Time.deltaTime);
         RBody.freezeRotation = false;
     }
