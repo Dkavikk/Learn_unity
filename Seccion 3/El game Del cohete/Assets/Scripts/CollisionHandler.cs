@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class CollisionHandler : MonoBehaviour
 {
     [SerializeField] float levelLoadDelay = 2f;
+
     [SerializeField] AudioClip SFXFinish;
     [SerializeField] AudioClip SFXDeath;
     [SerializeField] ParticleSystem PFXFinish;
@@ -12,15 +13,31 @@ public class CollisionHandler : MonoBehaviour
     AudioSource audioSource;
 
     bool isTransitioning = false;
+    bool CollisionDisable = false;
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
     }
+    void Update()
+    {
+        DebbugKeys();
+    }
+    void DebbugKeys()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            LoadNextLevel();
+        }
+        else if (Input.GetKeyDown(KeyCode.C))
+        {
+            CollisionDisable = !CollisionDisable;
+        }
+    }
 
     void OnCollisionEnter(Collision other)
     {
-        if (isTransitioning != true)
+        if (isTransitioning) {return;}
         {
             switch (other.gameObject.tag)
             {
@@ -46,7 +63,6 @@ public class CollisionHandler : MonoBehaviour
             }
         }
     }
-
     // le pone un delay al method LoadNextLevelSequence, y inmoviliza al jugador
     void StartNextLevelSequence()
     {
