@@ -32,5 +32,19 @@
 
 ## Seccion 3:
 #### Todo lo aprendido lo hice creando un juego de una naver voladora que va a ir del punto "A" al punto "B" 
+#### Todo lo aprendido lo hice creando un ObtacleCourse
 - Aprendizaje
-	-
+	- Integracion de sonido
+	- Integracion de efectos
+	- Modificacion de vectore
+	- Utilizar Build Settings
+	- ```AddRelativeForce()```
+	- ```Input.GetKey()```
+	- ```Mathf.Sin```
+	- ```Application.Quit()```
+	- ```switch ()```
+	- ```Invoke()```
+	- ```SceneManager.```
+		- ```LoadScene```
+		- ```sceneCountInBuildSettings```
+		- ```GetActiveScene().buildIndex ```
